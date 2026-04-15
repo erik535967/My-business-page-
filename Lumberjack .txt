@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erik Olson | Professional Lumberjack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a;
+            color: #e5e5e5;
+        }
+        .font-display {
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        .wood-texture {
+            background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" /%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.15"/%3E%3C/svg%3E');
+        }
+        .hero-pattern {
+            background-image: radial-gradient(circle at 20% 50%, rgba(234, 88, 12, 0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 80% 80%, rgba(22, 101, 52, 0.1) 0%, transparent 50%);
+        }
+        .image-hover {
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+        .image-hover:hover {
+            transform: scale(1.02);
+            filter: brightness(1.1);
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        /* Placeholder styling for images */
+        .img-placeholder {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            border: 2px dashed #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            min-height: 300px;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-neutral-900/90 backdrop-blur-md border-b border-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-3">
+                    <!-- Lumberjack Logo -->
+                    <div class="relative w-12 h-12 bg-gradient-to-br from-orange-600 to-orange-800 rounded-lg flex items-center justify-center shadow-lg overflow-hidden border-2 border-orange-500/30">
+                        <svg class="w-8 h-8 text-white relative z-10" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42zM5.25 19H5v-.25l6.35-6.35.25.25L5.25 19zM15.5 8.42l-1.41-1.41 1.17-1.17 1.41 1.41L15.5 8.42z"/>
+                        </svg>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"></div>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display text-2xl tracking-wider text-white leading-none">ERIK OLSON</span>
+                        <span class="text-[10px] text-orange-500 uppercase tracking-[0.2em] font-semibold">Professional Lumberjack</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-neutral-300 hover:text-orange-500 transition-colors text-sm uppercase tracking-widest">About</a>
+                    <a href="#work" class="text-neutral-300 hover:text-orange-500 transition-colors text-sm uppercase tracking-widest">Work</a>
+                    <a href="#gallery" class="text-neutral-300 hover:text-orange-500 transition-colors text-sm uppercase tracking-widest">Gallery</a>
+                    <a href="#contact" class="text-neutral-300 hover:text-orange-500 transition-colors text-sm uppercase tracking-widest">Contact</a>
+                    <a href="mailto:Erik.olsonluberjack@gmail.com" class="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded text-sm uppercase tracking-wider font-semibold transition-all">
+                        Email Me
+                    </a>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-neutral-900 border-b border-neutral-800">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <a href="#about" class="block text-neutral-300 hover:text-orange-500 py-2">About</a>
+                <a href="#work" class="block text-neutral-300 hover:text-orange-500 py-2">Work</a>
+                <a href="#gallery" class="block text-neutral-300 hover:text-orange-500 py-2">Gallery</a>
+                <a href="#contact" class="block text-neutral-300 hover:text-orange-500 py-2">Contact</a>
+                <a href="mailto:Erik.olsonluberjack@gmail.com" class="block text-orange-500 font-semibold py-2">Erik.olsonluberjack@gmail.com</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden wood-texture hero-pattern pt-20">
+        <div class="absolute inset-0 bg-gradient-to-b from-neutral-900/50 via-neutral-900/30 to-neutral-900"></div>
+
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <!-- Logo in Hero -->
+            <div class="mb-8 flex justify-center">
+                <div class="w-24 h-24 bg-gradient-to-br from-orange-600 to-orange-800 rounded-2xl flex items-center justify-center shadow-2xl border-4 border-orange-500/20 relative overflow-hidden">
+                    <svg class="w-16 h-16 text-white relative z-10" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42z"/>
+                    </svg>
+                    <div class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent"></div>
+                    <div class="absolute inset-0 border-2 border-white/10 rounded-2xl"></div>
+                    <div class="absolute inset-2 border border-white/5 rounded-xl"></div>
+                </div>
+            </div>
+
+            <div class="mb-6 inline-block">
+                <span class="text-orange-500 text-sm uppercase tracking-[0.3em] font-semibold">Professional Lumberjack</span>
+            </div>
+            <h1 class="font-display text-6xl md:text-8xl lg:text-9xl text-white mb-6 text-shadow tracking-wider">
+                ERIK OLSON
+            </h1>
+            <p class="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+                Dedicated to sustainable forestry, disciplined hard work, and the respectful harvesting of nature's resources.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#work" class="bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-none uppercase tracking-widest text-sm font-semibold transition-all transform hover:scale-105">
+                    View My Work
+                </a>
+                <a href="mailto:Erik.olsonluberjack@gmail.com" class="border-2 border-white/30 hover:border-orange-500 hover:text-orange-500 text-white px-8 py-4 rounded-none uppercase tracking-widest text-sm font-semibold transition-all">
+                    Get in Touch
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-neutral-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-orange-600/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42z"/>
+                            </svg>
+                        </div>
+                        <span class="text-orange-500 uppercase tracking-widest text-sm font-semibold">About Me</span>
+                    </div>
+                    <h2 class="font-display text-5xl md:text-6xl text-white mb-6">ROOTED IN <span class="text-orange-600">DISCIPLINE</span></h2>
+                    <div class="w-20 h-1 bg-orange-600 mb-8"></div>
+                    <div class="space-y-6 text-neutral-300 leading-relaxed text-lg">
+                        <p>
+                            My name is Erik Olson, and I am a dedicated and experienced lumberjack with a strong passion for forestry, hard work, and sustainable wood harvesting. Over the years, I have built a career rooted in discipline, physical strength, and respect for nature.
+                        </p>
+                        <p>
+                            As a lumberjack, my primary responsibility is the harvesting of trees for timber production. This involves carefully selecting trees, cutting them down safely, processing them into logs, and preparing them for transportation.
+                        </p>
+                        <p>
+                            My work plays an important role in supplying raw materials used in construction, furniture making, paper production, and many other industries.
+                        </p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-orange-600/20 blur-xl"></div>
+                    <!-- IMAGE 1: Erik at work - REPLACE THIS URL -->
+                    <div class="relative w-full h-96 md:h-[500px] rounded-sm shadow-2xl img-placeholder overflow-hidden group">
+                        <img 
+                            src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&h=600&fit=crop" 
+                            alt="Erik Olson at work" 
+                            class="w-full h-full object-cover image-hover"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'flex flex-col items-center justify-center h-full text-neutral-500\'><svg class=\'w-16 h-16 mb-4\' fill=\'none\' stroke=\'currentColor\' viewBox=\'0 0 24 24\'><path stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z\'></path></svg><p>Your Photo Here</p><p class=\'text-sm mt-2\'>Upload to postimg.cc</p></div>';"
+                        >
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+                            <p class="text-white font-semibold">Erik Olson - Professional Lumberjack</p>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-neutral-800 p-6 border-l-4 border-orange-600 shadow-xl">
+                        <p class="text-3xl font-display text-white">10+</p>
+                        <p class="text-sm text-neutral-400 uppercase tracking-wider">Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Process Section -->
+    <section id="work" class="py-24 bg-neutral-950 wood-texture">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="flex justify-center mb-4">
+                    <div class="w-12 h-12 bg-orange-600/20 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h2 class="font-display text-5xl md:text-6xl text-white mb-4">THE <span class="text-orange-600">PROCESS</span></h2>
+                <p class="text-neutral-400 max-w-2xl mx-auto">Each step requires precision, safety awareness, and technical skill.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="group bg-neutral-900/50 p-8 border border-neutral-800 hover:border-orange-600/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="w-12 h-12 bg-orange-600/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-orange-600 transition-colors">
+                        <span class="text-orange-600 group-hover:text-white font-bold text-xl">01</span>
+                    </div>
+                    <h3 class="font-display text-2xl text-white mb-3">Tree Selection</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Careful evaluation and selection of trees for sustainable harvesting.</p>
+                </div>
+
+                <div class="group bg-neutral-900/50 p-8 border border-neutral-800 hover:border-orange-600/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="w-12 h-12 bg-orange-600/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-orange-600 transition-colors">
+                        <span class="text-orange-600 group-hover:text-white font-bold text-xl">02</span>
+                    </div>
+                    <h3 class="font-display text-2xl text-white mb-3">Cutting & Felling</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Safe and precise cutting techniques to bring down selected trees.</p>
+                </div>
+
+                <div class="group bg-neutral-900/50 p-8 border border-neutral-800 hover:border-orange-600/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="w-12 h-12 bg-orange-600/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-orange-600 transition-colors">
+                        <span class="text-orange-600 group-hover:text-white font-bold text-xl">03</span>
+                    </div>
+                    <h3 class="font-display text-2xl text-white mb-3">Limbing & Bucking</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Removing branches and cutting trunk into manageable logs.</p>
+                </div>
+
+                <div class="group bg-neutral-900/50 p-8 border border-neutral-800 hover:border-orange-600/50 transition-all duration-300 hover:transform hover:-translate-y-2">
+                    <div class="w-12 h-12 bg-orange-600/20 rounded-full flex items-center justify-center mb-6 group-hover:bg-orange-600 transition-colors">
+                        <span class="text-orange-600 group-hover:text-white font-bold text-xl">04</span>
+                    </div>
+                    <h3 class="font-display text-2xl text-white mb-3">Transportation</h3>
+                    <p class="text-neutral-400 text-sm leading-relaxed">Moving logs to processing facilities for further production.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <div class="flex items-center space-x-2 mb-2">
+                        <svg class="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42z"/>
+                        </svg>
+                        <span class="text-orange-500 uppercase tracking-widest text-xs font-semibold">Portfolio</span>
+                    </div>
+                    <h2 class="font-display text-5xl md:text-6xl text-white mb-2">IN THE <span class="text-orange-600">FIELD</span></h2>
+                    <p class="text-neutral-400">A glimpse into the daily work and environment.</p>
+                </div>
+                <div class="mt-4 md:mt-0 text-right">
+                    <p class="text-sm text-neutral-500 uppercase tracking-widest">Forested Regions</p>
+                    <p class="text-white font-semibold">Remote & Natural Environments</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- IMAGE 2: Climbing and cutting -->
+                <div class="relative group overflow-hidden rounded-sm h-80">
+                    <img 
+                        src="https://images.unsplash.com/photo-1511497584788-876760111969?w=600&h=400&fit=crop" 
+                        alt="Climbing and cutting" 
+                        class="w-full h-full object-cover image-hover"
+                        onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'img-placeholder h-80\'><div class=\'text-center\'><p>Climbing & Cutting</p><p class=\'text-sm mt-2\'>Upload photo to see it here</p></div></div>';"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-orange-500 text-sm uppercase tracking-wider mb-1">Precision Work</p>
+                            <p class="text-white font-semibold">Advanced Climbing & Cutting</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IMAGE 3: Erik at work portrait -->
+                <div class="relative group overflow-hidden rounded-sm h-80">
+                    <img 
+                        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop" 
+                        alt="Erik at work" 
+                        class="w-full h-full object-cover image-hover"
+                        onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'img-placeholder h-80\'><div class=\'text-center\'><p>Erik at Work</p><p class=\'text-sm mt-2\'>Upload photo to see it here</p></div></div>';"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-orange-500 text-sm uppercase tracking-wider mb-1">Safety First</p>
+                            <p class="text-white font-semibold">Professional Equipment & Gear</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IMAGE 4: Log transportation -->
+                <div class="relative group overflow-hidden rounded-sm h-80">
+                    <img 
+                        src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=600&h=400&fit=crop" 
+                        alt="Log transportation" 
+                        class="w-full h-full object-cover image-hover"
+                        onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'img-placeholder h-80\'><div class=\'text-center\'><p>Log Transportation</p><p class=\'text-sm mt-2\'>Upload photo to see it here</p></div></div>';"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div>
+                            <p class="text-orange-500 text-sm uppercase tracking-wider mb-1">Scale Operations</p>
+                            <p class="text-white font-semibold">Large-Scale Transport</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="py-24 bg-neutral-950 border-y border-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1">
+                    <div class="h-96 rounded-sm overflow-hidden shadow-2xl">
+                        <img 
+                            src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&h=600&fit=crop" 
+                            alt="Logging operations" 
+                            class="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'img-placeholder h-96\'><div class=\'text-center\'><p>Logging Operations</p><p class=\'text-sm mt-2\'>Upload photo to see it here</p></div></div>';"
+                        >
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-orange-600/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42z"/>
+                            </svg>
+                        </div>
+                        <span class="text-orange-500 uppercase tracking-widest text-sm font-semibold">Expertise</span>
+                    </div>
+                    <h2 class="font-display text-5xl text-white mb-6">ADVANCED <span class="text-orange-600">EXPERTISE</span></h2>
+                    <p class="text-neutral-300 text-lg mb-8 leading-relaxed">
+                        I have been working as a lumberjack for several years and have grown into an advanced professional level. I can handle large-scale logging operations, operate heavy equipment, and support less experienced workers.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-2 h-2 bg-orange-600 rounded-full"></div>
+                            <span class="text-neutral-300">Large-scale logging operations</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-2 h-2 bg-orange-600 rounded-full"></div>
+                            <span class="text-neutral-300">Heavy equipment operation</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-2 h-2 bg-orange-600 rounded-full"></div>
+                            <span class="text-neutral-300">Mentoring junior workers</span>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-2 h-2 bg-orange-600 rounded-full"></div>
+                            <span class="text-neutral-300">Safety protocol enforcement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Grid -->
+    <section class="py-24 bg-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <div class="flex justify-center mb-4">
+                    <div class="w-12 h-12 bg-orange-600/20 rounded-full flex items-center justify-center">
+                        <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h2 class="font-display text-5xl md:text-6xl text-white mb-4">CAREER <span class="text-orange-600">BENEFITS</span></h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="bg-neutral-800/30 p-6 text-center border border-neutral-700 hover:border-orange-600/50 transition-colors">
+                    <div class="text-4xl mb-4">💪</div>
+                    <h3 class="text-white font-semibold mb-2">Physical Fitness</h3>
+                    <p class="text-neutral-400 text-sm">Stay strong and healthy through active work</p>
+                </div>
+                <div class="bg-neutral-800/30 p-6 text-center border border-neutral-700 hover:border-orange-600/50 transition-colors">
+                    <div class="text-4xl mb-4">🌲</div>
+                    <h3 class="text-white font-semibold mb-2">Nature Connection</h3>
+                    <p class="text-neutral-400 text-sm">Work outdoors in beautiful forests</p>
+                </div>
+                <div class="bg-neutral-800/30 p-6 text-center border border-neutral-700 hover:border-orange-600/50 transition-colors">
+                    <div class="text-4xl mb-4">🛠️</div>
+                    <h3 class="text-white font-semibold mb-2">Skill Development</h3>
+                    <p class="text-neutral-400 text-sm">Master specialized technical abilities</p>
+                </div>
+                <div class="bg-neutral-800/30 p-6 text-center border border-neutral-700 hover:border-orange-600/50 transition-colors">
+                    <div class="text-4xl mb-4">💵</div>
+                    <h3 class="text-white font-semibold mb-2">Financial Stability</h3>
+                    <p class="text-neutral-400 text-sm">Reliable income in essential industry</p>
+                </div>
+                <div class="bg-neutral-800/30 p-6 text-center border border-neutral-700 hover:border-orange-600/50 transition-colors">
+                    <div class="text-4xl mb-4">🦅</div>
+                    <h3 class="text-white font-semibold mb-2">Independence</h3>
+                    <p class="text-neutral-400 text-sm">Autonomy in remote work environments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="py-32 bg-neutral-950 wood-texture relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-orange-600/10 to-green-900/10"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <svg class="w-16 h-16 text-orange-600/30 mx-auto mb-8" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+            <blockquote class="font-display text-3xl md:text-5xl text-white leading-tight mb-8">
+                Being a lumberjack is more than just a job—it is a career built on <span class="text-orange-600">discipline</span>, <span class="text-orange-600">responsibility</span>, and <span class="text-orange-600">respect for nature</span>.
+            </blockquote>
+            <div class="w-20 h-1 bg-orange-600 mx-auto"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-neutral-900 border-t border-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 bg-orange-600/20 rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42z"/>
+                            </svg>
+                        </div>
+                        <span class="text-orange-500 uppercase tracking-widest text-sm font-semibold">Contact</span>
+                    </div>
+                    <h2 class="font-display text-5xl text-white mb-6">GET IN <span class="text-orange-600">TOUCH</span></h2>
+                    <p class="text-neutral-400 mb-8 text-lg">
+                        Based in forested regions where timber resources are abundant. Available for large-scale operations and consultation.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4 group">
+                            <div class="w-12 h-12 bg-orange-600/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-orange-600 transition-colors">
+                                <svg class="w-6 h-6 text-orange-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold mb-1">Location</h3>
+                                <p class="text-neutral-400">Forested Regions, Remote Areas</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4 group">
+                            <div class="w-12 h-12 bg-orange-600/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-orange-600 transition-colors">
+                                <svg class="w-6 h-6 text-orange-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold mb-1">Email</h3>
+                                <a href="mailto:Erik.olsonluberjack@gmail.com" class="text-orange-500 hover:text-orange-400 transition-colors font-mono text-sm break-all">
+                                    Erik.olsonluberjack@gmail.com
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4 group">
+                            <div class="w-12 h-12 bg-orange-600/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-orange-600 transition-colors">
+                                <svg class="w-6 h-6 text-orange-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h3 class="text-white font-semibold mb-1">Experience Level</h3>
+                                <p class="text-neutral-400">Advanced Professional</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-8 border-t border-neutral-800">
+                        <a href="mailto:Erik.olsonluberjack@gmail.com" class="inline-flex items-center space-x-2 bg-orange-600 hover:bg-orange-700 text-white px-6 py-3 rounded transition-all hover:scale-105">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <span>Send Email Now</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-neutral-800/30 p-8 border border-neutral-700">
+                    <form class="space-y-6" onsubmit="event.preventDefault(); window.location.href='mailto:Erik.olsonluberjack@gmail.com?subject=Website Contact&body=' + encodeURIComponent(document.getElementById('message').value);">
+                        <div>
+                            <label class="block text-sm font-medium text-neutral-300 mb-2">Name</label>
+                            <input type="text" class="w-full bg-neutral-900 border border-neutral-700 rounded-none px-4 py-3 text-white focus:border-orange-600 focus:outline-none transition-colors" placeholder="Your name">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-neutral-300 mb-2">Email</label>
+                            <input type="email" class="w-full bg-neutral-900 border border-neutral-700 rounded-none px-4 py-3 text-white focus:border-orange-600 focus:outline-none transition-colors" placeholder="your@email.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-neutral-300 mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full bg-neutral-900 border border-neutral-700 rounded-none px-4 py-3 text-white focus:border-orange-600 focus:outline-none transition-colors" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white py-4 uppercase tracking-widest font-semibold transition-colors flex items-center justify-center space-x-2">
+                            <span>Send Message</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-950 border-t border-neutral-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class="w-10 h-10 bg-gradient-to-br from-orange-600 to-orange-800 rounded-lg flex items-center justify-center shadow-lg border border-orange-500/30">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.71 5.63l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-3.12 3.12-1.93-1.91-1.41 1.41 1.42 1.42L3 16.25V21h4.75l8.92-8.92 1.42 1.42 1.41-1.41-1.92-1.92 3.12-3.12c.4-.4.4-1.03.01-1.42z"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display text-xl tracking-wider text-white leading-none">ERIK OLSON</span>
+                        <span class="text-[10px] text-orange-500 uppercase tracking-wider">Professional Lumberjack</span>
+                    </div>
+                </div>
+                
+                <div class="text-neutral-500 text-sm mb-4 md:mb-0 text-center">
+                    <a href="mailto:Erik.olsonluberjack@gmail.com" class="hover:text-orange-500 transition-colors">
+                        Erik.olsonluberjack@gmail.com
+                    </a>
+                </div>
+
+                <div class="flex space-x-6">
+                    <a href="mailto:Erik.olsonluberjack@gmail.com" class="text-neutral-400 hover:text-orange-600 transition-colors" title="Email">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-neutral-800 text-center text-neutral-600 text-sm">
+                © 2026 Erik Olson. Professional Lumberjack Services. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
